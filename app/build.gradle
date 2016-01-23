@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "github.dzc.apptemplate"
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -21,9 +21,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':downloadmanagerlib')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'de.greenrobot:greendao:2.1.0'
-    compile project(':downloadmanagerlib')
+    compile 'com.marshalchen.ultimaterecyclerview:library:0.3.11'
+    compile 'com.kogitune:pre-lollipop-activity-transition:1.3.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:design:22.2.0'
 }

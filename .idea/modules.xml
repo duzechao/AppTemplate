@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/clearunuseresources/clearunuseresources.iml" filepath="$PROJECT_DIR$/clearunuseresources/clearunuseresources.iml" />
       <module fileurl="file://$PROJECT_DIR$/downloadmanagerlib/downloadmanagerlib.iml" filepath="$PROJECT_DIR$/downloadmanagerlib/downloadmanagerlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendaogen/greendaogen.iml" filepath="$PROJECT_DIR$/greendaogen/greendaogen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/viewlib/viewlib.iml" filepath="$PROJECT_DIR$/viewlib/viewlib.iml" />
     </modules>
   </component>
 </project>

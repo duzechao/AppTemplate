@@ -1,65 +1,89 @@
 package github.dzc.apptemplate;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
+import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
-import de.greenrobot.event.Subscribe;
-import git.dzc.downloadmanagerlib.download.DownloadManager;
-import git.dzc.downloadmanagerlib.download.DownloadTask;
-import github.dzc.apptemplate.event.MessageEvent;
-import github.dzc.apptemplate.network.HttpUtils;
+import github.dzc.apptemplate.recyclerview.RecyclerViewActivity;
+import github.dzc.apptemplate.recyclerview.RecyclerViewDifferentViewTypeActivity;
+import github.dzc.apptemplate.recyclerview.viewholder.StringViewHolder;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-    private TextView tv;
+    @Bind(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    private List<Class> classes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EventBus.getDefault().register(this);
-        HttpUtils.initHttpClientIntercept();
-        tv = (TextView) findViewById(R.id.textView);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,Main2Activity.class));
-//                HttpUtils.get("http://www.baidu.com", new Callback() {
-//                    @Override
-//                    public void onFailure(Request request, IOException e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Response response) throws IOException {
-//                        //  tv.setText(response.body().string());
-//                        Log.d("response", response.toString());
-//                        Log.d("response", response.body().string());
-//                        // Log.d("response", response.cacheResponse().body().string());
-//                        Response cachedResponse = response.cacheResponse();
-//                        if (cachedResponse != null) {
-//                            Log.d("cached", cachedResponse.toString());
-//                        }
-//
-//
-//                    }
-//                });
-                DownloadTask task = new DownloadTask();
-                task.setId("id222");
-                task.setSaveDirPath(getExternalCacheDir().getPath() + "/");
-                task.setFileName("aaa.jpg");
-                task.setUrl("http://d.hiphotos.baidu.com/baike/w%3D268/sign=151eb56428381f309e198aaf91004c67/21a4462309f790521313c0620cf3d7ca7bcbd55a.jpg");
-                DownloadManager.getInstance(MainActivity.this).addDownloadTask(task);
-            }
-        });
-
-       // Log.d("cached",client.getCache().getDirectory().toString());
+        ButterKnife.bind(this);
+        initData();
+        initView();
     }
+
+    private void initView(){
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new StringAdapter(classes));
+
+    }
+    private void initData(){
+        classes = new ArrayList<>();
+        classes.add(RecyclerViewActivity.class);
+        classes.add(RecyclerViewDifferentViewTypeActivity.class);
+    }
+
+    class StringAdapter extends RecyclerView.Adapter<StringViewHolder>{
+        List<Class> classes;
+
+        public StringAdapter(List<Class> classes) {
+            this.classes = classes;
+        }
+
+        @Override
+        public StringViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view  = LayoutInflater.from(MainActivity.this).inflate(R.layout.string_item,null);
+            return new StringViewHolder(view,true);
+        }
+
+        @Override
+        public void onBindViewHolder(StringViewHolder holder, int position) {
+            final Class c = classes.get(position);
+            holder.tv.setText(c.getSimpleName());
+            holder.tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,c));
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return classes.size();
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,27 +107,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-
-    }
-
-    @Subscribe
-    public void onEvent(MessageEvent event){
-        Log.d("test","onEvent");
-        tv.setText(event.getMsg()+"    "+event.getPerson().getName());
-    }
 
 }

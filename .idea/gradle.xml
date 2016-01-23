@@ -13,7 +13,15 @@
             <option value="$PROJECT_DIR$/clearunuseresources" />
             <option value="$PROJECT_DIR$/downloadmanagerlib" />
             <option value="$PROJECT_DIR$/greendaogen" />
-            <option value="$PROJECT_DIR$/viewlib" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/clearunuseresources" />
+            <option value="$PROJECT_DIR$/downloadmanagerlib" />
+            <option value="$PROJECT_DIR$/greendaogen" />
           </set>
         </option>
       </GradleProjectSettings>
