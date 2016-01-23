@@ -47,8 +47,13 @@ public class RecyclerViewActivity extends BaseActivity {
         headerView = LayoutInflater.from(this).inflate(R.layout.head_view,null);
         adapter = new StringAdapter(data);
         recyclerView.setAdapter(adapter);
+
+        //为每个item添加头部的布局   这里运用到的其实就是RecyclerView.ItemDecoration
+        //没错  可能一般都是用这个来实现item之间的分隔线的  但是线也是一个view，但这个view够大的时候，就是一个头部了
         StickyRecyclerHeadersDecoration stickyRecyclerHeadersDecoration = new StickyRecyclerHeadersDecoration(adapter);
         recyclerView.addItemDecoration(stickyRecyclerHeadersDecoration);
+
+
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter){
             //这个方法还有别的方法可以重载  可以控制如滑动删除等功能
 
