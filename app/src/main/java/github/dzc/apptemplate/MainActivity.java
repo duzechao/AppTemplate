@@ -22,6 +22,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
+import github.dzc.apptemplate.fragment.FragmentActivity;
+import github.dzc.apptemplate.fragment.FragmentTestActivity;
+import github.dzc.apptemplate.lollianimation.Animation1Activity;
+import github.dzc.apptemplate.recyclerview.CoordinatorLayoutActivity;
 import github.dzc.apptemplate.recyclerview.RecyclerViewActivity;
 import github.dzc.apptemplate.recyclerview.RecyclerViewDifferentViewTypeActivity;
 import github.dzc.apptemplate.recyclerview.viewholder.StringViewHolder;
@@ -51,6 +55,11 @@ public class MainActivity extends BaseActivity {
         classes = new ArrayList<>();
         classes.add(RecyclerViewActivity.class);
         classes.add(RecyclerViewDifferentViewTypeActivity.class);
+        classes.add(CoordinatorLayoutActivity.class);
+        classes.add(PopupWindowActivity.class);
+        classes.add(FragmentActivity.class);
+        classes.add(FragmentTestActivity.class);
+        classes.add(Animation1Activity.class);
     }
 
     class StringAdapter extends RecyclerView.Adapter<StringViewHolder>{

@@ -23,7 +23,13 @@
         <activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:label="@string/title_activity_recycler_view" />
-        <activity android:name=".recyclerview.RecyclerViewDifferentViewTypeActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerViewDifferentViewTypeActivity" />
+        <activity android:name=".PopupWindowActivity" />
+        <activity android:name=".fragment.FragmentActivity" />
+        <activity android:name=".fragment.FragmentTestActivity" />
+        <activity android:name=".recyclerview.CoordinatorLayoutActivity" />
+        <activity android:name=".lollianimation.Animation1Activity" />
+        <activity android:name=".lollianimation.Animation2Activity"></activity>
     </application>
 
 </manifest>
