@@ -29,6 +29,7 @@ import github.dzc.apptemplate.recyclerview.CoordinatorLayoutActivity;
 import github.dzc.apptemplate.recyclerview.RecyclerViewActivity;
 import github.dzc.apptemplate.recyclerview.RecyclerViewDifferentViewTypeActivity;
 import github.dzc.apptemplate.recyclerview.viewholder.StringViewHolder;
+import github.dzc.apptemplate.sinaDemo.SinaActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -60,6 +61,7 @@ public class MainActivity extends BaseActivity {
         classes.add(FragmentActivity.class);
         classes.add(FragmentTestActivity.class);
         classes.add(Animation1Activity.class);
+        classes.add(SinaActivity.class);
     }
 
     class StringAdapter extends RecyclerView.Adapter<StringViewHolder>{

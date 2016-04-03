@@ -29,7 +29,8 @@
         <activity android:name=".fragment.FragmentTestActivity" />
         <activity android:name=".recyclerview.CoordinatorLayoutActivity" />
         <activity android:name=".lollianimation.Animation1Activity" />
-        <activity android:name=".lollianimation.Animation2Activity"></activity>
+        <activity android:name=".lollianimation.Animation2Activity" />
+        <activity android:name=".sinaDemo.SinaActivity"></activity>
     </application>
 
 </manifest>
